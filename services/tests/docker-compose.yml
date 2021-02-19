@@ -1,0 +1,49 @@
+version: "3.7"
+networks:
+  wisdonet:
+    name: wisdonet
+
+services:
+  # Launch MySQL instance to hold DB
+  mysql_wisdo_tests:
+    image: mysql:5.6
+    container_name: mysql_wisdo_tests
+    volumes:
+      - ../../deps/db-local/:/docker-entrypoint-initdb.d/
+    networks:
+      - wisdonet
+    environment:
+      MYSQL_LOG_CONSOLE: "true"
+    ports:
+      - 3306
+
+  wisdo-tests:
+    container_name: wisdo-tests
+    depends_on:
+      - mysql_wisdo_tests
+    networks:
+      - wisdonet
+    build:
+      context: ../../services/wisdo
+      args:
+        BUILD_ENV: dev
+    volumes:
+      - ../../services/wisdo/src:/app/src
+    env_file:
+      - ./.env
+    ports:
+      - 4500
+
+  # Functional tests
+  tests:
+    container_name: tests
+    networks:
+      - wisdonet
+    depends_on:
+      - wisdo-tests
+    build: ./
+    env_file:
+      - .env
+    ports:
+      # debugger port
+      - 9339

@@ -1,0 +1,8 @@
+services/wisdo/node_modules
+services/wisdo/dist
+services/wisdo/.tscache
+node_modules
+npm-debug.log
+.vscode
+.idea
+

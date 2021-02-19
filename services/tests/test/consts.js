@@ -1,0 +1,3 @@
+// entrypoint
+module.exports = {
+};

@@ -1,0 +1,24 @@
+{
+  "name": "tests",
+  "version": "0.0.0",
+  "description": "The test suite for the wisdo",
+  "author": "Anshuman Jaiswal",
+  "private": true,
+  "license": "UNLICENSED",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "chai-iso8601": "^1.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "mocha": "^5.2.0",
+    "moment": "^2.27.0",
+    "moment-timezone": "^0.5.31",
+    "mysql2": "^2.1.0",
+    "sequelize": "^6.3.3"
+  },
+  "scripts": {
+    "test": "mocha --recursive",
+    "test-local": "JWT_SECRET=shhhhhhared-secret SERVER_URL=http://localhost:4500 DB_ENDPOINT=mysql://root:root@localhost:3306/wisdo_db mocha --recursive"
+  }
+}

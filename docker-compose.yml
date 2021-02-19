@@ -1,0 +1,35 @@
+version: "3.7"
+networks:
+  wisdo:
+    name: wisdo
+
+services:
+  mysql_wisdo:
+    image: mysql:5.6
+    container_name: mysql_wisdo
+    volumes:
+      - ./deps/db-local/:/docker-entrypoint-initdb.d/
+    networks:
+      - wisdo
+    environment:
+      MYSQL_LOG_CONSOLE: "true"
+    ports:
+      - 3306:3306
+  wisdo:
+    container_name: wisdo
+    depends_on:
+      - mysql_wisdo
+    networks:
+      - wisdo
+    build:
+      context: ./services/wisdo
+      args:
+        BUILD_ENV: dev
+    env_file:
+      - ./services/wisdo/.env
+    volumes:
+      -  ./services/wisdo/src:/app/src
+    command: npm run start-dev
+    ports:
+      - 4500:4500
+      - 9229

@@ -1,0 +1,8 @@
+package.json
+services/wisdo/package.json
+services/wisdo/src/middleware/validate-body/index.ts
+services/wisdo/src/swagger.ts
+services/wisdo/tsconfig.json
+services/tests/package.json
+services/tests/test/main.test.js
+tslint.json

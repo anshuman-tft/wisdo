@@ -1,0 +1,10 @@
+#!/bin/sh
+set -e
+echo "hello entrypoint"
+
+# sleeping few seconds for mysql to load so migration will work
+sleep 10
+# running migrations
+npx sequelize-cli db:migrate
+
+exec "$@"

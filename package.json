@@ -1,0 +1,27 @@
+{
+  "name": "wisdo",
+  "version": "0.0.0",
+  "description": "Wisdo assignment",
+  "author": "Anshuman Jaiswal",
+  "private": true,
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-prettier": "^4.0.0",
+    "eslint-plugin-chai": "^0.0.1",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-mocha": "^5.3.0"
+  },
+  "scripts": {
+    "lint": "eslint */**/*.{js,ts,tsx} --quiet --fix",
+    "lint-files": "eslint $LINT_FILES --quiet ",
+    "lint-files-win": "eslint %LINT_FILES% --quiet"
+  },
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.6.0",
+    "@typescript-eslint/parser": "^4.6.0",
+    "eslint": "^7.12.1",
+    "typescript": "^4.0.3"
+  }
+}
